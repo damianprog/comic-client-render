@@ -9,27 +9,16 @@ import { setSignedUser } from '../redux/user/user-actions';
 import './signout.scss';
 
 const Signout = ({ setSignedUser }) => {
-  const [signoutUser, { loading }] = useMutation(SIGNOUT, {
-    onError(err) {
-      console.log(err);
-    },
-    onCompleted() {
-      setSignedUser(null);
-    },
-  });
 
   useEffect(() => {
-    signoutUser();
+    localStorage.setItem('marvel_united_token', '');
+    setSignedUser(null);
   }, []);
 
   return (
     <Card className="signout">
       <CardContent>
-        {loading ? (
-          <div className="loading">
-            <CircularProgress />
-          </div>
-        ) : (
+        {
           <Fragment>
             <p>You've been signed out.</p>
             <Link to="/">
@@ -40,7 +29,7 @@ const Signout = ({ setSignedUser }) => {
               <b>Sign in again</b>
             </Link>
           </Fragment>
-        )}
+        }
       </CardContent>
     </Card>
   );
