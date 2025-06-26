@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
-import "./save-comic-dialog.scss";
 import {
   DialogActions,
   DialogContent,
@@ -11,6 +10,7 @@ import { Close } from "@mui/icons-material";
 import SaveComicCategoriesList from "./save-comic-categories-list";
 import SaveComicCreateCategory from "./save-comic-create-category";
 import ToggleHtmlScroll from "../../utils/toggle-html-scroll";
+import "./save-comic-dialog.scss";
 
 const SaveComicDialog = ({ comic, open, closeDialog }) => {
   useEffect(() => {

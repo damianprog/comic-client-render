@@ -6,7 +6,7 @@ import GetUserProfileImage from "../../utils/get-user-profile-image";
 
 import "./user-activities-list-item-header.scss";
 const UserActivitiesListItemHeader = ({ userActivity }) => {
-  const { createdAt, user, category, comic } = userActivity;
+  const { createdAt, user, category, comic, review } = userActivity;
 
   const publishedDate = () => {
     let formattedDate = "";
@@ -32,9 +32,11 @@ const UserActivitiesListItemHeader = ({ userActivity }) => {
           <Link to={`/profile/${user.nickname}`}>{user.nickname}</Link>&nbsp;
           {userActivity.__typename === "UserComic" ? (
             <span>saved to {category}</span>
-          ) : (
+          ) : userActivity.__typename === "Review" ? (
             <span>reviewed {comic.title}</span>
-          )}
+          ) : userActivity.__typename === "Comment" ? (
+            <span>commented on review {review.text.substring(0, 20)} ...</span>
+          ) : null}
         </p>
         <span className="date">{publishedDate()}</span>
       </div>

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const SIGNOUT = gql`
   mutation signout {
@@ -266,6 +266,24 @@ export const USER_ACTIVITIES = gql`
           penciler
           linkingUrl
         }
+        text
+        __typename
+      }
+      ... on Comment {
+        id
+        text
+        user {
+          id
+          nickname
+          userDetails {
+            profileImage
+          }
+        }
+        review {
+          id
+          text
+        }
+
         text
         createdAt
         __typename

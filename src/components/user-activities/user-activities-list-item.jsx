@@ -1,5 +1,5 @@
 import { Card } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment } from "react";
 import ComicTeaser from "../comic-teaser/comic-teaser";
 import MoreLess from "../more-less/more-less";
@@ -14,14 +14,16 @@ const UserActivitiesListItem = ({ userActivity }) => {
       <UserActivitiesListItemHeader userActivity={userActivity} />
       {userActivity.__typename === "UserComic" ? (
         <ComicTeaser comic={comic} showDescription={true} />
-      ) : (
+      ) : userActivity.__typename === "Review" ? (
         <Fragment>
           <MoreLess text={text} length={235} />
           <div className="review-teaser">
             <ComicTeaser comic={comic} showDescription={true} />
           </div>
         </Fragment>
-      )}
+      ) : userActivity.__typename === "Comment" ? (
+        <MoreLess text={text} length={235} />
+      ) : null}
     </Card>
   );
 };

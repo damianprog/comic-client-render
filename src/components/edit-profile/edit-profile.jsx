@@ -9,14 +9,16 @@ import EditProfileForm from "./edit-profile-form";
 import { setSignedUser } from "../redux/user/user-actions";
 import { connect, useDispatch } from "react-redux";
 import { setSnackbar } from "../redux/snackbar/snackbar-actions";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({
   profileUser: { nickname, birthDate, userDetails },
   showClose,
   close,
-  history,
   setSignedUser,
 }) => {
+  const navigate = useNavigate();
+
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     nickname,
@@ -37,7 +39,7 @@ const EditProfile = ({
       setSignedUser(result.data.updateUser);
       if (showClose) close();
       dispatch(setSnackbar(true, "success", "Profile changes have been saved"));
-      history.push(`/profile/${result.data.updateUser.nickname}`);
+      navigate(`/profile/${result.data.updateUser.nickname}`);
     },
     onError(err) {
       if (err.graphQLErrors[0]) {

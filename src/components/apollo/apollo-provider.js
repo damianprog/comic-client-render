@@ -15,7 +15,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import { persistor } from "../redux/store";
 
 const Provider = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleErrorsLink = onError(({ graphQLErrors }) => {
     if (graphQLErrors) {
@@ -30,10 +30,10 @@ const Provider = () => {
         const handledErrorCode = handledError.extensions.code;
 
         if (handledErrorCode === "UNAUTHENTICATED") {
-          history.push("/signout");
+          navigate("/signout");
         }
       } else {
-        history.push("/error-page");
+        navigate("/error-page");
       }
     }
   });

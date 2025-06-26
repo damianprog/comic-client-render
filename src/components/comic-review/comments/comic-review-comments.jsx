@@ -1,7 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import ComicIssueReviewsList from "../../user-responses/user-responses-list";
+import UserResponsesList from "../../user-responses/user-responses-list";
 import ComicReviewCommentsForm from "./comic-review-comments-form";
 import Pagination from "@mui/material/Pagination";
 import "./comic-review-comments.scss";
@@ -37,7 +37,7 @@ const ComicReviewComments = ({ signedUser, review }) => {
   return (
     <div className="comic-review-comments">
       <h2>Comments</h2>
-      {comments ? <ComicIssueReviewsList reviews={currentPageReviews()} /> : ""}
+      {comments ? <UserResponsesList reviews={currentPageReviews()} /> : ""}
       {comments && comments.length > 0 && (
         <Pagination
           className="pagination"
@@ -46,7 +46,7 @@ const ComicReviewComments = ({ signedUser, review }) => {
           onChange={paginate}
         />
       )}
-      <ComicReviewCommentsForm review={review} />
+      {signedUser && <ComicReviewCommentsForm review={review} />}
     </div>
   );
 };
@@ -69,4 +69,8 @@ const COMMENTS = gql`
   }
 `;
 
-export default ComicReviewComments;
+const mapStateToProps = (state) => ({
+  signedUser: state.user.signedUser,
+});
+
+export default connect(mapStateToProps)(ComicReviewComments);
