@@ -1,14 +1,14 @@
-import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import './sign.scss';
-import { DialogContent } from '@material-ui/core';
-import Signin from './signin';
-import Signup from './signup';
-import ToggleHtmlScroll from '../../utils/toggle-html-scroll';
-import { Close } from '@material-ui/icons';
-import { useEffect } from 'react';
+import React from "react";
+import Dialog from "@mui/material/Dialog";
+import "./sign.scss";
+import { DialogContent } from "@mui/material";
+import Signin from "./signin";
+import Signup from "./signup";
+import ToggleHtmlScroll from "../../utils/toggle-html-scroll";
+import { Close } from "@mui/icons-material";
+import { useEffect } from "react";
 
-const SignDialog = ({ open, closeDialog, form = 'signin', switchForm }) => {
+const SignDialog = ({ open, closeDialog, form = "signin", switchForm }) => {
   useEffect(() => {
     ToggleHtmlScroll(open);
   }, [open]);
@@ -27,7 +27,7 @@ const SignDialog = ({ open, closeDialog, form = 'signin', switchForm }) => {
         <Close onClick={closeDialog} />
       </div>
       <DialogContent className="content">
-        {form === 'signin' ? (
+        {form === "signin" ? (
           <Signin switchForm={switchForm} onSign={closeDialog} />
         ) : (
           <Signup switchForm={switchForm} onSign={closeDialog} />

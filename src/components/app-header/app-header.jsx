@@ -1,19 +1,19 @@
-import React, { useState, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { ReactComponent as LogoIcon } from '../../assets/logo-icon.svg';
-import { ReactComponent as InIcon } from '../../assets/in-icon.svg';
-import Hamburger from '../hamburger/hamburger';
-import { Search } from '@material-ui/icons';
-import SignDialog from '../sign/sign-dialog';
-import UserDropdown from '../user-dropdown/user-dropdown';
+import { ReactComponent as LogoIcon } from "../../assets/logo-icon.svg";
+import { ReactComponent as InIcon } from "../../assets/in-icon.svg";
+import Hamburger from "../hamburger/hamburger";
+import { Search } from "@mui/icons-material";
+import SignDialog from "../sign/sign-dialog";
+import UserDropdown from "../user-dropdown/user-dropdown";
 
-import './app-header.scss';
+import "./app-header.scss";
 
 const AppHeader = ({ signedUser }) => {
   const [openSignDialog, setOpenSignDialog] = useState(false);
-  const [signDialogForm, setSignDialogFormType] = useState('signin');
+  const [signDialogForm, setSignDialogFormType] = useState("signin");
 
   const toggleSignDialog = () => {
     setOpenSignDialog(!openSignDialog);
@@ -25,7 +25,7 @@ const AppHeader = ({ signedUser }) => {
   };
 
   const switchSignDialogForm = () => {
-    const nextForm = signDialogForm === 'signin' ? 'signup' : 'signin';
+    const nextForm = signDialogForm === "signin" ? "signup" : "signin";
     setSignDialogFormType(nextForm);
   };
 
@@ -38,8 +38,8 @@ const AppHeader = ({ signedUser }) => {
           ) : (
             <Fragment>
               <InIcon />
-              <span onClick={() => openForm('signin')}>Sign In</span> |
-              <span onClick={() => openForm('signup')}>Join</span>
+              <span onClick={() => openForm("signin")}>Sign In</span> |
+              <span onClick={() => openForm("signup")}>Join</span>
             </Fragment>
           )}
         </div>

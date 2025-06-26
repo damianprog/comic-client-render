@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import GetComicsByTitle from '../../api-utils/get-comics-by-title';
+import React, { useState } from "react";
+import GetComicsByTitle from "../../api-utils/get-comics-by-title";
 
-import { Search } from '@material-ui/icons';
+import { Search } from "@mui/icons-material";
 
-import './search.scss';
-import SearchResults from './search-results';
+import "./search.scss";
+import SearchResults from "./search-results";
 
 const SearchComics = () => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [comics, setComics] = useState([]);
   const [loading, setLoading] = useState(false);
   const [noMatches, setNoMatches] = useState(false);
@@ -19,7 +19,7 @@ const SearchComics = () => {
 
   const getComics = async (event) => {
     event.preventDefault();
-    if (title !== '') {
+    if (title !== "") {
       setLoading(true);
       setNoMatches(false);
 

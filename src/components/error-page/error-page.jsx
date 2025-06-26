@@ -1,8 +1,8 @@
-import { Card, CardContent } from '@material-ui/core';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Card, CardContent } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './error-page.scss';
+import "./error-page.scss";
 
 const ErrorPage = () => {
   return (

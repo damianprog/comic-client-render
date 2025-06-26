@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import ComicsPreviewItem from '../comics-preview-item/comics-preview-item';
+import ComicsPreviewItem from "../comics-preview-item/comics-preview-item";
 
-import './comics-preview.scss';
+import "./comics-preview.scss";
 
 const ComicsPreview = ({ comics, title, controlDropdownContent }) => (
   <div className="comics-preview">

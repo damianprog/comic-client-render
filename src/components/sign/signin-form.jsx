@@ -1,15 +1,15 @@
-import { gql, useMutation } from '@apollo/client';
-import { Button, CircularProgress } from '@material-ui/core';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { setSignedUser } from '../redux/user/user-actions';
-import './signin-form.scss';
+import { gql, useMutation } from "@apollo/client";
+import { Button, CircularProgress } from "@mui/material";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { setSignedUser } from "../redux/user/user-actions";
+import "./signin-form.scss";
 
 const SigninForm = ({ onSign, setSignedUser }) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const onChange = (keyValue) => {
@@ -21,7 +21,7 @@ const SigninForm = ({ onSign, setSignedUser }) => {
   const [loginUser, { loading }] = useMutation(SIGNIN_USER, {
     update(_, result) {
       const token = result.data.signin.token;
-      localStorage.setItem('marvel_united_token', token);
+      localStorage.setItem("marvel_united_token", token);
       setSignedUser(result.data.signin);
       if (onSign) {
         onSign();
@@ -62,7 +62,7 @@ const SigninForm = ({ onSign, setSignedUser }) => {
         name="email"
         type="email"
         maxLength="60"
-        className={errors.email ? 'error' : ''}
+        className={errors.email ? "error" : ""}
         onChange={onInputChange}
         required
       ></input>
@@ -72,7 +72,7 @@ const SigninForm = ({ onSign, setSignedUser }) => {
         name="password"
         type="password"
         maxLength="25"
-        className={errors.password ? 'error' : ''}
+        className={errors.password ? "error" : ""}
         onChange={onInputChange}
         required
       ></input>
@@ -95,18 +95,18 @@ const SigninForm = ({ onSign, setSignedUser }) => {
 const SIGNIN_USER = gql`
   mutation signin($email: String!, $password: String!) {
     signin(email: $email, password: $password) {
+      id
+      nickname
+      birthDate
+      email
+      createdAt
+      userDetails {
         id
-        nickname
-        birthDate
-        email
-        createdAt
-        userDetails {
-          id
-          about
-          interests
-          profileImage
-          backgroundImage
-        }
+        about
+        interests
+        profileImage
+        backgroundImage
+      }
       token
     }
   }

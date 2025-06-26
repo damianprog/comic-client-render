@@ -1,9 +1,9 @@
-import React from 'react';
-import ComicTeaser from '../comic-teaser/comic-teaser';
-import ComicReviewHeader from './comic-review-header';
-import ComicReviewComments from './comments/comic-review-comments';
+import React, { useEffect } from "react";
+import ComicTeaser from "../comic-teaser/comic-teaser";
+import ComicReviewHeader from "./comic-review-header";
+import ComicReviewComments from "./comments/comic-review-comments";
 
-import './comic-review.scss';
+import "./comic-review.scss";
 
 const ComicReview = ({ review }) => {
   return (

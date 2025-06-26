@@ -1,24 +1,24 @@
-import React from 'react';
-import { useLazyQuery } from '@apollo/client';
-import { USER_ACTIVITIES } from '../../graphql/graphql';
-import { connect } from 'react-redux';
-import { DateRange } from '@material-ui/icons';
+import React from "react";
+import { useLazyQuery } from "@apollo/client";
+import { USER_ACTIVITIES } from "../../graphql/graphql";
+import { connect } from "react-redux";
+import { DateRange } from "@mui/icons-material";
 
-import './profile.scss';
-import ProfileAvatarBackground from './profile-avatar-background';
-import { Link } from 'react-router-dom';
-import UserActivitiesList from '../user-activities/user-activities-list';
-import EditProfileActivator from '../edit-profile/edit-profile-activator';
-import ProfilePageDetailsStatistics from './profile-details-statistics';
-import ProfileDetailsAbout from './profile-details-about';
-import { useEffect } from 'react';
-import { CircularProgress } from '@material-ui/core';
+import "./profile.scss";
+import ProfileAvatarBackground from "./profile-avatar-background";
+import { Link } from "react-router-dom";
+import UserActivitiesList from "../user-activities/user-activities-list";
+import EditProfileActivator from "../edit-profile/edit-profile-activator";
+import ProfilePageDetailsStatistics from "./profile-details-statistics";
+import ProfileDetailsAbout from "./profile-details-about";
+import { useEffect } from "react";
+import { CircularProgress } from "@mui/material";
 
 const Profile = ({ user, signedUser }) => {
   const [
     getUserActivities,
     { data: { userActivities } = {}, fetchMore, loading },
-  ] = useLazyQuery(USER_ACTIVITIES, { fetchPolicy: 'network-only' });
+  ] = useLazyQuery(USER_ACTIVITIES, { fetchPolicy: "network-only" });
 
   useEffect(() => {
     if (user) {
@@ -30,9 +30,9 @@ const Profile = ({ user, signedUser }) => {
     signedUser && user && signedUser.id === user.id;
 
   const joinedDate = () => {
-    const parsedDate = new Date(parseInt(user.createdAt));
-    const dateOptions = { month: 'long', year: 'numeric' };
-    return parsedDate.toLocaleDateString('en-US', dateOptions);
+    const parsedDate = new Date(user.createdAt);
+    const dateOptions = { month: "long", year: "numeric" };
+    return parsedDate.toLocaleDateString("en-US", dateOptions);
   };
 
   const {

@@ -1,10 +1,10 @@
-import { Button } from '@material-ui/core';
-import { LibraryAdd } from '@material-ui/icons';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import SaveComicDialog from '../save-comic/save-comic-dialog';
-import './comic-teaser.scss';
+import { Button } from "@mui/material";
+import { LibraryAdd } from "@mui/icons-material";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import SaveComicDialog from "../save-comic/save-comic-dialog";
+import "./comic-teaser.scss";
 
 const ComicTeaser = ({ comic, showDescription, signedUser }) => {
   const [openSaveComicDialog, setOpenSaveComicDialog] = useState(false);

@@ -1,18 +1,12 @@
-import React from 'react';
-import './library-category.scss';
-import ComicsPreviewItem from '../comics-preview-item/comics-preview-item';
-import {
-  Card,
-  CardContent,
-  List,
-  ListItem,
-  ListItemText,
-} from '@material-ui/core';
-import { deleteUserComicFromCache } from '../../graphql/utils';
-import { useMutation } from '@apollo/client';
-import { DELETE_USER_COMIC } from '../../graphql/graphql';
-import { connect } from 'react-redux';
-import { useParams } from 'react-router';
+import React from "react";
+import "./library-category.scss";
+import ComicsPreviewItem from "../comics-preview-item/comics-preview-item";
+import { Card, CardContent, List, ListItem, ListItemText } from "@mui/material";
+import { deleteUserComicFromCache } from "../../graphql/utils";
+import { useMutation } from "@apollo/client";
+import { DELETE_USER_COMIC } from "../../graphql/graphql";
+import { connect } from "react-redux";
+import { useParams } from "react-router";
 
 const LibraryCategory = ({ category, userComics, signedUser }) => {
   const { nickname } = useParams();

@@ -1,9 +1,9 @@
-import { MoreVert } from '@material-ui/icons';
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Dropdown from '../dropdown/dropdown';
+import { MoreVert } from "@mui/icons-material";
+import React from "react";
+import Dropdown from "../dropdown/dropdown";
+import { useNavigate } from "react-router-dom";
 
-import './comics-preview-item.scss';
+import "./comics-preview-item.scss";
 
 const ComicsPreviewItem = ({
   comic,
@@ -12,8 +12,10 @@ const ComicsPreviewItem = ({
   controlDropdownContent,
   disableAnimation,
 }) => {
+  const navigate = useNavigate();
+
   const redirectToComicPage = () => {
-    history.push(`/comic/${comic.id}`);
+    navigate(`/comic/${comic.id}`);
     window.scrollTo(0, 0);
   };
 
@@ -21,7 +23,7 @@ const ComicsPreviewItem = ({
 
   return (
     <div className="comics-preview-item">
-      <div className={`animated-preview ${disableAnimation ? '' : 'move'}`}>
+      <div className={`animated-preview ${disableAnimation ? "" : "move"}`}>
         <div onClick={redirectToComicPage} className="img-container">
           <img alt="comic" src={coverImage} />
         </div>
@@ -41,4 +43,4 @@ const ComicsPreviewItem = ({
   );
 };
 
-export default withRouter(ComicsPreviewItem);
+export default ComicsPreviewItem;

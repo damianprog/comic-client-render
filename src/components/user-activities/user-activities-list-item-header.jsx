@@ -1,18 +1,18 @@
-import { Avatar } from '@material-ui/core';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import GetFormattedDate from '../../utils/get-formatted-date';
-import GetUserProfileImage from '../../utils/get-user-profile-image';
+import { Avatar } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
+import GetFormattedDate from "../../utils/get-formatted-date";
+import GetUserProfileImage from "../../utils/get-user-profile-image";
 
-import './user-activities-list-item-header.scss';
+import "./user-activities-list-item-header.scss";
 const UserActivitiesListItemHeader = ({ userActivity }) => {
   const { createdAt, user, category, comic } = userActivity;
 
   const publishedDate = () => {
-    let formattedDate = '';
+    let formattedDate = "";
     if (createdAt) {
-      const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-      formattedDate = GetFormattedDate(+createdAt, dateOptions);
+      const dateOptions = { month: "long", day: "numeric", year: "numeric" };
+      formattedDate = GetFormattedDate(createdAt, dateOptions);
     }
 
     return formattedDate;
@@ -30,7 +30,7 @@ const UserActivitiesListItemHeader = ({ userActivity }) => {
       <div className="item-header-details">
         <p>
           <Link to={`/profile/${user.nickname}`}>{user.nickname}</Link>&nbsp;
-          {userActivity.__typename === 'UserComic' ? (
+          {userActivity.__typename === "UserComic" ? (
             <span>saved to {category}</span>
           ) : (
             <span>reviewed {comic.title}</span>

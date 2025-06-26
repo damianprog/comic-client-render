@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
-import './nav-list.scss';
+import "./nav-list.scss";
 
 const NavList = ({ signedUser, close }) => {
-  const history = useHistory();
+  const history = useNavigate();
 
   const logout = () => {
     close();
-    history.push('/signout');
+    history.push("/signout");
   };
 
   return (

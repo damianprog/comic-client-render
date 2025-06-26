@@ -1,17 +1,16 @@
-import { useMutation } from '@apollo/client';
-import { Card, CardContent, CircularProgress } from '@material-ui/core';
-import React, { useEffect } from 'react';
-import { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-import { SIGNOUT } from '../../graphql/graphql';
-import { setSignedUser } from '../redux/user/user-actions';
-import './signout.scss';
+import { useMutation } from "@apollo/client";
+import { Card, CardContent, CircularProgress } from "@mui/material";
+import React, { useEffect } from "react";
+import { Fragment } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { SIGNOUT } from "../../graphql/graphql";
+import { setSignedUser } from "../redux/user/user-actions";
+import "./signout.scss";
 
 const Signout = ({ setSignedUser }) => {
-
   useEffect(() => {
-    localStorage.setItem('marvel_united_token', '');
+    localStorage.setItem("marvel_united_token", "");
     setSignedUser(null);
   }, []);
 
@@ -39,4 +38,4 @@ const mapDispatchToProps = (dispatch) => ({
   setSignedUser: (user) => dispatch(setSignedUser(user)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Signout));
+export default connect(null, mapDispatchToProps)(Signout);

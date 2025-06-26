@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Close } from '@material-ui/icons';
-import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
-import './profile-avatar-background.scss';
-import backgroundPlaceholder from '../../assets/placeholders/background-placeholder.png';
-import profilePlaceholder from '../../assets/placeholders/profile-placeholder.png';
+import React, { useState, useEffect } from "react";
+import { Close } from "@mui/icons-material";
+import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
+import "./profile-avatar-background.scss";
+import backgroundPlaceholder from "../../assets/placeholders/background-placeholder.png";
+import profilePlaceholder from "../../assets/placeholders/profile-placeholder.png";
 
 const ProfileAvatarBackground = ({
   onChange,
@@ -27,18 +27,18 @@ const ProfileAvatarBackground = ({
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        inputName === 'backgroundImage'
+        inputName === "backgroundImage"
           ? setUserBackgroundImage(reader.result)
           : setUserProfileImage(reader.result);
         onChange({ [event.target.name]: reader.result });
-        event.target.value = '';
+        event.target.value = "";
       };
     }
   };
 
   const deleteBackgroundImage = () => {
-    setUserBackgroundImage('');
-    onChange({ backgroundImage: '' });
+    setUserBackgroundImage("");
+    onChange({ backgroundImage: "" });
   };
 
   return (
@@ -47,8 +47,8 @@ const ProfileAvatarBackground = ({
         style={{
           backgroundImage: `${
             showControlIcons
-              ? 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),'
-              : ''
+              ? "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),"
+              : ""
           }
           url('${
             userBackgroundImage ? userBackgroundImage : backgroundPlaceholder
@@ -81,8 +81,8 @@ const ProfileAvatarBackground = ({
         style={{
           backgroundImage: `${
             showControlIcons
-              ? 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),'
-              : ''
+              ? "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),"
+              : ""
           }
           url('${userProfileImage ? userProfileImage : profilePlaceholder}')`,
         }}

@@ -1,11 +1,11 @@
-import React from 'react';
-import './save-comic-categories-list.scss';
-import { useQuery } from '@apollo/client';
-import { List } from '@material-ui/core';
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { USER_COMICS, USER_COMICS_CATEGORIES } from '../../graphql/graphql';
-import SaveComicCategoriesListItem from './save-comic-categories-list-item';
+import React from "react";
+import "./save-comic-categories-list.scss";
+import { useQuery } from "@apollo/client";
+import { List } from "@mui/material";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { USER_COMICS, USER_COMICS_CATEGORIES } from "../../graphql/graphql";
+import SaveComicCategoriesListItem from "./save-comic-categories-list-item";
 
 const SaveComicCategoriesList = ({ comic, signedUser }) => {
   const { data: { userComics } = {} } = useQuery(USER_COMICS, {
@@ -26,7 +26,7 @@ const SaveComicCategoriesList = ({ comic, signedUser }) => {
 
   const categoriesWithDefault = () => {
     const categories = userComicsCategories
-      ? ['Favourites', ...userComicsCategories]
+      ? ["Favourites", ...userComicsCategories]
       : [];
 
     const uniqueCategories = [...new Set(categories)];

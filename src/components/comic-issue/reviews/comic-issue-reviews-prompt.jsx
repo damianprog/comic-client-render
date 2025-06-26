@@ -1,9 +1,9 @@
-import { Avatar, Button } from '@material-ui/core';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import profilePlaceholder from '../../../assets/placeholders/profile-placeholder.png';
-import './comic-issue-reviews-prompt.scss';
+import { Avatar, Button } from "@mui/material";
+import React from "react";
+import { connect } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import profilePlaceholder from "../../../assets/placeholders/profile-placeholder.png";
+import "./comic-issue-reviews-prompt.scss";
 
 const ComicIssueReviewsPrompt = ({ signedUser, reviews }) => {
   const { comicId } = useParams();

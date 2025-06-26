@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
-import './save-comic-categories-list.scss';
-import { useMutation } from '@apollo/client';
-import {
-  Checkbox,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core';
-import { CREATE_USER_COMIC, DELETE_USER_COMIC } from '../../graphql/graphql';
-import { addUserComicToCache } from '../../graphql/utils';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { Checkbox, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { CREATE_USER_COMIC, DELETE_USER_COMIC } from "../../graphql/graphql";
+import { addUserComicToCache } from "../../graphql/utils";
+import "./save-comic-categories-list.scss";
 
 const SaveComicCategoriesListItem = ({ comic, category, userComics = [] }) => {
   const [isRequestPending, setIsRequestPending] = useState(false);
@@ -20,7 +15,7 @@ const SaveComicCategoriesListItem = ({ comic, category, userComics = [] }) => {
           userComics(cachedUserComicsRefs = [], { readField }) {
             const updatedUserComicsRefs = cachedUserComicsRefs.filter(
               (userComicRef) =>
-                deleteUserComic.id !== readField('id', userComicRef)
+                deleteUserComic.id !== readField("id", userComicRef)
             );
 
             return updatedUserComicsRefs;
@@ -83,6 +78,7 @@ const SaveComicCategoriesListItem = ({ comic, category, userComics = [] }) => {
         <Checkbox
           checked={isCategoryInUserComics(category)}
           disableRipple
+          color="secondary"
         ></Checkbox>
       </ListItemIcon>
       <ListItemText primary={category}></ListItemText>

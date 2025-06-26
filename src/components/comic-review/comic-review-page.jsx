@@ -1,11 +1,11 @@
-import { useQuery } from '@apollo/client';
-import { CircularProgress } from '@material-ui/core';
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { REVIEW } from '../../graphql/graphql';
-import ComicReview from './comic-review';
+import { useQuery } from "@apollo/client";
+import { CircularProgress } from "@mui/material";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { REVIEW } from "../../graphql/graphql";
+import ComicReview from "./comic-review";
 
-import './comic-review-page.scss';
+import "./comic-review-page.scss";
 
 const ComicReviewPage = () => {
   const { reviewId } = useParams();

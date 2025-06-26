@@ -1,14 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { setSignedUser } from '../redux/user/user-actions';
-import { Link, withRouter } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { setSignedUser } from "../redux/user/user-actions";
+import { Link } from "react-router-dom";
 
-import './user-dropdown.scss';
-import Dropdown from '../dropdown/dropdown';
+import "./user-dropdown.scss";
+import Dropdown from "../dropdown/dropdown";
+import { useNavigate } from "react-router-dom";
 
 const UserDropdown = ({ signedUser, history }) => {
+  const navigate = useNavigate();
+
   const logout = () => {
-    history.push('/signout');
+    navigate("/signout");
   };
 
   return (
@@ -33,6 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
   setSignedUser: (user) => dispatch(setSignedUser(user)),
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(UserDropdown)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDropdown);

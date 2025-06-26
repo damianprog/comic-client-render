@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import ComicIssueDetails from './comic-issue-details';
-import ComicsPreview from '../comics-preview/comics-preview';
+import ComicIssueDetails from "./comic-issue-details";
+import ComicsPreview from "../comics-preview/comics-preview";
 
-import GetComicsFromSeries from '../../api-utils/get-comics-from-series';
+import GetComicsFromSeries from "../../api-utils/get-comics-from-series";
 
-import ComicIssueReviews from './reviews/comic-issue-reviews';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import ComicIssueReviews from "./reviews/comic-issue-reviews";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const ComicIssue = ({ comic }) => {
   const [comicsFromSeries, setComicsFromSeries] = useState([]);

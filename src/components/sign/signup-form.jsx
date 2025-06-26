@@ -1,18 +1,18 @@
-import { gql, useMutation } from '@apollo/client';
-import { Button, CircularProgress } from '@material-ui/core';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { setSignedUser } from '../redux/user/user-actions';
-import SignupFormInputs from './signup-form-inputs';
+import { gql, useMutation } from "@apollo/client";
+import { Button, CircularProgress } from "@mui/material";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { setSignedUser } from "../redux/user/user-actions";
+import SignupFormInputs from "./signup-form-inputs";
 
 const SignupForm = ({ setSignedUser, onSign }) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
-    nickname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    birthDate: '',
+    nickname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    birthDate: "",
   });
   const onChange = (keyValue) => {
     setValues({ ...values, ...keyValue });
@@ -39,7 +39,7 @@ const SignupForm = ({ setSignedUser, onSign }) => {
   const passwordsMatch = () => {
     const match = values.password === values.confirmPassword;
     if (!match) {
-      setErrors({ ...errors, password: 'Passwords must match' });
+      setErrors({ ...errors, password: "Passwords must match" });
     }
 
     return match;

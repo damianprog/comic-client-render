@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { Button, CircularProgress, IconButton } from '@material-ui/core';
-import './edit-profile.scss';
-import { Close } from '@material-ui/icons';
-import ProfileAvatarBackground from '../profile/profile-avatar-background';
-import { useMutation } from '@apollo/client';
-import gql from 'graphql-tag';
-import EditProfileForm from './edit-profile-form';
-import { withRouter } from 'react-router-dom';
-import { setSignedUser } from '../redux/user/user-actions';
-import { connect, useDispatch } from 'react-redux';
-import { setSnackbar } from '../redux/snackbar/snackbar-actions';
+import React, { useState } from "react";
+import { Button, CircularProgress, IconButton } from "@mui/material";
+import "./edit-profile.scss";
+import { Close } from "@mui/icons-material";
+import ProfileAvatarBackground from "../profile/profile-avatar-background";
+import { useMutation } from "@apollo/client";
+import gql from "graphql-tag";
+import EditProfileForm from "./edit-profile-form";
+import { setSignedUser } from "../redux/user/user-actions";
+import { connect, useDispatch } from "react-redux";
+import { setSnackbar } from "../redux/snackbar/snackbar-actions";
 
 const EditProfile = ({
   profileUser: { nickname, birthDate, userDetails },
@@ -37,11 +36,13 @@ const EditProfile = ({
     update(_, result) {
       setSignedUser(result.data.updateUser);
       if (showClose) close();
-      dispatch(setSnackbar(true, 'success', 'Profile changes have been saved'));
+      dispatch(setSnackbar(true, "success", "Profile changes have been saved"));
       history.push(`/profile/${result.data.updateUser.nickname}`);
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception);
+      if (err.graphQLErrors[0]) {
+        setErrors(err.graphQLErrors[0].extensions.exception);
+      }
       console.log(err.graphQLErrors[0]);
     },
     variables: {
@@ -131,4 +132,4 @@ const mapDispatchToProps = (dispatch) => ({
   setSignedUser: (user) => dispatch(setSignedUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(EditProfile));
+export default connect(null, mapDispatchToProps)(EditProfile);

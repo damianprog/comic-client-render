@@ -1,17 +1,19 @@
-import React from 'react';
-import ComicIssueReviewsListItem from './comic-issue-reviews-list-item';
-import './comic-issue-reviews-list.scss';
+import React, { useEffect } from "react";
+import ComicIssueReviewsListItem from "./user-responses-list-item";
+import "./user-responses-list.scss";
 
 const ComicIssueReviewsList = ({ reviews }) => {
   const sortedReviews = () => {
-    return reviews.sort(
+    const sortedReviews = [...reviews];
+
+    return sortedReviews.sort(
       (a, b) => parseInt(b.createdAt) - parseInt(a.createdAt)
     );
   };
 
   return (
-    <div className="comic-issue-reviews-list">
-      {reviews.length > 0 ? (
+    <div className="user-responses-list">
+      {reviews && reviews.length > 0 ? (
         sortedReviews().map((review, index) => (
           <ComicIssueReviewsListItem
             key={`${review.id}-${index}`}

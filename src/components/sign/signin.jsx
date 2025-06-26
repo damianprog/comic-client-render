@@ -1,9 +1,9 @@
-import React from 'react';
-import { Button, Divider } from '@material-ui/core';
+import React from "react";
+import { Button, Divider } from "@mui/material";
 
-import './sign.scss';
-import './signin.scss';
-import SigninForm from './signin-form';
+import "./sign.scss";
+import "./signin.scss";
+import SigninForm from "./signin-form";
 
 const Signin = ({ switchForm, onSign }) => {
   return (

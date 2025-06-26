@@ -1,22 +1,25 @@
-import { useMutation, gql } from '@apollo/client';
-import { Avatar, Button, Input, CircularProgress } from '@material-ui/core';
-import React, { useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import GetUserProfileImage from '../../../utils/get-user-profile-image';
-import { setSnackbar } from '../../redux/snackbar/snackbar-actions';
-import './comic-review-comments-creation.scss';
+import { useMutation, gql } from "@apollo/client";
+import { Avatar, Button, Input, CircularProgress } from "@mui/material";
+import React, { useState } from "react";
+import { connect, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import GetUserProfileImage from "../../../utils/get-user-profile-image";
+import { setSnackbar } from "../../redux/snackbar/snackbar-actions";
+import { useNavigate } from "react-router-dom";
+import "./comic-review-comments-creation.scss";
 
 const ComicReviewCommentsForm = ({ signedUser, review }) => {
+  const navigate = useNavigate();
   const [showFormActions, setShowFormActions] = useState(false);
-  const [commentText, setCommentText] = useState('');
+  const [commentText, setCommentText] = useState("");
   const dispatch = useDispatch();
 
   const [createComment, { createLoading }] = useMutation(CREATE_COMMENT, {
     update() {
-      dispatch(setSnackbar(true, 'success', 'Comment has been posted'));
-      setCommentText('');
+      dispatch(setSnackbar(true, "success", "Comment has been posted"));
+      setCommentText("");
       setShowFormActions(false);
+      navigate(0);
     },
     onError(err) {
       console.log(err.graphQLErrors[0]);
@@ -35,6 +38,10 @@ const ComicReviewCommentsForm = ({ signedUser, review }) => {
     event.preventDefault();
     createComment();
   };
+
+  const mapStateToProps = (state) => ({
+    signedUser: state.user.signedUser,
+  });
 
   return (
     <div className="comic-review-comments-creation">

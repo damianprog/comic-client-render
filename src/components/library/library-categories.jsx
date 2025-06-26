@@ -1,7 +1,7 @@
-import React from 'react';
-import './library-categories.scss';
-import { List, ListItem, ListItemText, TextField } from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
+import React from "react";
+import "./library-categories.scss";
+import { List, ListItem, ListItemText, TextField } from "@mui/material";
+import { Autocomplete } from "@mui/material";
 
 const LibraryCategories = ({ categories, onSelectCategory }) => {
   const sortedCategories = () => {

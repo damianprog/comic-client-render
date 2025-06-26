@@ -1,9 +1,9 @@
-import { CircularProgress } from '@material-ui/core';
-import React, { useState } from 'react';
-import SearchResultsList from './search-results-list';
-import Pagination from '@material-ui/lab/Pagination';
+import { CircularProgress } from "@mui/material";
+import React, { useState } from "react";
+import SearchResultsList from "./search-results-list";
+import Pagination from "@mui/material/Pagination";
 
-import './search-results.scss';
+import "./search-results.scss";
 
 const SearchResults = ({ comics, loading }) => {
   const [currentPage, setCurrentPage] = useState(1);

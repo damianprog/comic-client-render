@@ -1,12 +1,12 @@
-import { useQuery } from '@apollo/client';
-import React from 'react';
-import { useParams, withRouter } from 'react-router';
-import ComicReviewCreation from './comic-review-creation';
-import { REVIEW } from '../../graphql/graphql';
+import { useQuery } from "@apollo/client";
+import React from "react";
+import { useParams } from "react-router";
+import ComicReviewCreation from "./comic-review-creation";
+import { REVIEW } from "../../graphql/graphql";
 
-import './comic-review-creation-page.scss';
-import { connect } from 'react-redux';
-import { CircularProgress } from '@material-ui/core';
+import "./comic-review-creation-page.scss";
+import { connect } from "react-redux";
+import { CircularProgress } from "@mui/material";
 
 const ComicReviewUpdatePage = ({ signedUser, history }) => {
   const { reviewId } = useParams();
@@ -15,7 +15,7 @@ const ComicReviewUpdatePage = ({ signedUser, history }) => {
     userReview.user.id === signedUser.id;
 
   const { data: { review } = {}, loading } = useQuery(REVIEW, {
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
     variables: {
       id: reviewId,
     },
@@ -47,4 +47,4 @@ const mapStateToProps = (state) => ({
   signedUser: state.user.signedUser,
 });
 
-export default connect(mapStateToProps)(withRouter(ComicReviewUpdatePage));
+export default connect(mapStateToProps)(ComicReviewUpdatePage);

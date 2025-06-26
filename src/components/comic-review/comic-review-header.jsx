@@ -5,27 +5,27 @@ import {
   List,
   ListItem,
   ListItemText,
-} from '@material-ui/core';
-import React from 'react';
-import { gql, useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import GetUserProfileImage from '../../utils/get-user-profile-image';
-import GetFormattedDate from '../../utils/get-formatted-date';
-import { useHistory } from 'react-router-dom';
-import './comic-review-header.scss';
-import { connect, useDispatch } from 'react-redux';
-import Dropdown from '../dropdown/dropdown';
-import { MoreVert } from '@material-ui/icons';
-import { setSnackbar } from '../redux/snackbar/snackbar-actions';
+} from "@mui/material";
+import React from "react";
+import { gql, useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
+import GetUserProfileImage from "../../utils/get-user-profile-image";
+import GetFormattedDate from "../../utils/get-formatted-date";
+import { useNavigate } from "react-router-dom";
+import "./comic-review-header.scss";
+import { connect, useDispatch } from "react-redux";
+import Dropdown from "../dropdown/dropdown";
+import { MoreVert } from "@mui/icons-material";
+import { setSnackbar } from "../redux/snackbar/snackbar-actions";
 
 const ComicReviewHeader = ({ review, signedUser }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [deleteReview] = useMutation(DELETE_REVIEW, {
     update(_, { data: { deleteReview } }) {
-      history.push(`/comic/${deleteReview.comic.id}`);
-      dispatch(setSnackbar(true, 'success', 'Review has been deleted'));
+      navigate(`/comic/${deleteReview.comic.id}`);
+      dispatch(setSnackbar(true, "success", "Review has been deleted"));
     },
     onError(err) {
       console.log(err);
@@ -35,17 +35,17 @@ const ComicReviewHeader = ({ review, signedUser }) => {
   const { user, createdAt } = review;
 
   const publishedDate = () => {
-    let formattedDate = '';
+    let formattedDate = "";
     if (createdAt) {
-      const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-      formattedDate = GetFormattedDate(+createdAt, dateOptions);
+      const dateOptions = { month: "long", day: "numeric", year: "numeric" };
+      formattedDate = GetFormattedDate(createdAt, dateOptions);
     }
 
     return formattedDate;
   };
 
   const redirectToUpdatePage = () => {
-    history.push(`/reviews/${review.id}/update`);
+    navigate(`/reviews/${review.id}/update`);
   };
 
   return (

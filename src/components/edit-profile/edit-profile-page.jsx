@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
-import EditProfile from './edit-profile';
-import { useLazyQuery } from '@apollo/client';
-import { USER } from '../../graphql/graphql';
-import { connect } from 'react-redux';
-import './edit-profile-page.scss';
-import { CircularProgress } from '@material-ui/core';
+import React, { useEffect } from "react";
+import EditProfile from "./edit-profile";
+import { useLazyQuery } from "@apollo/client";
+import { USER } from "../../graphql/graphql";
+import { connect } from "react-redux";
+import "./edit-profile-page.scss";
+import { CircularProgress } from "@mui/material";
 
 const EditProfilePage = ({ signedUser }) => {
   const [getUser, { data: { user: profileUser } = {}, loading }] = useLazyQuery(
     USER,
     {
       variables: {
-        nickname: signedUser ? signedUser.nickname : '',
+        nickname: signedUser ? signedUser.nickname : "",
       },
     }
   );

@@ -1,11 +1,11 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { USER_COMICS } from '../../graphql/graphql';
-import { connect } from 'react-redux';
-import './library.scss';
-import { useParams } from 'react-router';
-import { CircularProgress } from '@material-ui/core';
-import LibraryContent from './library-content';
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { USER_COMICS } from "../../graphql/graphql";
+import { connect } from "react-redux";
+import "./library.scss";
+import { useParams } from "react-router";
+import { CircularProgress } from "@mui/material";
+import LibraryContent from "./library-content";
 
 const Library = () => {
   const { nickname } = useParams();

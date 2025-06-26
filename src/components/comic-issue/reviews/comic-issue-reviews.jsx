@@ -1,15 +1,14 @@
-import { useQuery } from '@apollo/client';
-import React, { Fragment, useEffect, useState } from 'react';
-import { REVIEWS } from '../../../graphql/graphql';
-import { connect } from 'react-redux';
-import ComicIssueReviewsPrompt from './comic-issue-reviews-prompt';
-import './comic-issue-reviews.scss';
-import ComicIssueReviewsList from './list/comic-issue-reviews-list';
-import { CircularProgress } from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
+import { useQuery } from "@apollo/client";
+import React, { Fragment, useEffect, useState } from "react";
+import { REVIEWS } from "../../../graphql/graphql";
+import { connect } from "react-redux";
+import ComicIssueReviewsPrompt from "./comic-issue-reviews-prompt";
+import ComicIssueReviewsList from "../../user-responses/user-responses-list";
+import { CircularProgress } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import "./comic-issue-reviews.scss";
 
 const ComicIssueReviews = ({ signedUser, comic }) => {
-
   const {
     data: { reviews } = {},
     refetch,
@@ -50,7 +49,7 @@ const ComicIssueReviews = ({ signedUser, comic }) => {
             <Fragment>
               {signedUser && <ComicIssueReviewsPrompt reviews={reviews} />}
               <ComicIssueReviewsList reviews={currentPageReviews()} />
-              {reviews.length > 0 && (
+              {reviews && reviews.length > 0 && (
                 <Pagination
                   className="pagination"
                   count={Math.ceil(reviews.length / 10)}

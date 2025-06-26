@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './comic-issue-details-image.scss';
+import React from "react";
+import { connect } from "react-redux";
+import "./comic-issue-details-image.scss";
 
-import { Button } from '@material-ui/core';
-import { LibraryAdd } from '@material-ui/icons';
+import { Button } from "@mui/material";
+import { LibraryAdd } from "@mui/icons-material";
 
 const ComicIssueDetailsImage = ({ image, onClickSaveComic, signedUser }) => {
   return (
